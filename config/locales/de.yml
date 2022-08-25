@@ -25,6 +25,7 @@ de:
         city: Stadt
         email: E-Mail
         facebook: Facebook
+        fax: Fax
         google_analytics: Google Analytics
         google_plus: Google+
         google_site_verification: Google Site Verification
@@ -38,6 +39,7 @@ de:
         postal_code: PLZ
         robots_allowed: Sichtbar für Suchmaschinen
         theme: Webseiten Theme
+        title: Titel
         twitter: Twitter
         vat_identifier: USt-IdNr
         vat_identifier_description: USt-IdNr

@@ -2,10 +2,12 @@ class CreateSpinaTables < ActiveRecord::Migration[4.2]
   def change
     create_table "spina_accounts", force: :cascade do |t|
       t.string   "name"
+      t.string   "title"
       t.string   "address"
       t.string   "postal_code"
       t.string   "city"
       t.string   "phone"
+      t.string   "fax"
       t.string   "email"
       t.text     "preferences"
       t.datetime "created_at",                     null: false
