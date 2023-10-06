@@ -1,6 +1,6 @@
 <div class="relative sticky z-10 top-0 pt-4 bg-white trix-toolbar" id="<%= @trix_id %>">
   <div class="flex items-center flex-wrap" data-controller="reveal">
-    <div class="flex items-center bg-gray-200 rounded overflow-hidden mb-3 mr-3">
+    <div class="flex items-center bg-gray-200 rounded overflow-hidden mb-3 mr-3" data-trix-button-group="text-tools">
       <button type="button" class="hover:bg-gray-300 text-gray-700 w-9 h-9 flex items-center justify-center" data-trix-attribute="bold" data-trix-key="b" title="${Trix.config.lang.bold}" tabindex="-1">
         <svg class="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M333.49 238a122 122 0 0 0 27-65.21C367.87 96.49 308 32 233.42 32H34a16 16 0 0 0-16 16v48a16 16 0 0 0 16 16h31.87v288H34a16 16 0 0 0-16 16v48a16 16 0 0 0 16 16h209.32c70.8 0 134.14-51.75 141-122.4 4.74-48.45-16.39-92.06-50.83-119.6zM145.66 112h87.76a48 48 0 0 1 0 96h-87.76zm87.76 288h-87.76V288h87.76a56 56 0 0 1 0 112z"/></svg>
       </button>
@@ -27,7 +27,7 @@
       </button>
     </div>
   
-    <div class="flex items-center bg-gray-200 rounded overflow-hidden mr-3 mb-3">
+    <div class="flex items-center bg-gray-200 rounded overflow-hidden mr-3 mb-3" data-trix-button-group="file-tools">
       
       <%= link_to helpers.spina.admin_media_picker_path(target: "insert_#{@trix_id}"), class: "hover:bg-gray-300 text-gray-700 w-9 h-9 flex items-center justify-center", data: {turbo_frame: "modal"} do %>
         <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -66,11 +66,7 @@
         <svg class="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M432 424H16a16 16 0 0 0-16 16v16a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16v-16a16 16 0 0 0-16-16zM27.31 363.3l96-96a16 16 0 0 0 0-22.62l-96-96C17.27 138.66 0 145.78 0 160v192c0 14.31 17.33 21.3 27.31 11.3zM435.17 168H204.83A12.82 12.82 0 0 0 192 180.83v22.34A12.82 12.82 0 0 0 204.83 216h230.34A12.82 12.82 0 0 0 448 203.17v-22.34A12.82 12.82 0 0 0 435.17 168zM432 48H16A16 16 0 0 0 0 64v16a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V64a16 16 0 0 0-16-16zm3.17 248H204.83A12.82 12.82 0 0 0 192 308.83v22.34A12.82 12.82 0 0 0 204.83 344h230.34A12.82 12.82 0 0 0 448 331.17v-22.34A12.82 12.82 0 0 0 435.17 296z"/></svg>
       </button>
     </div>
-    
-    <div class="absolute hidden w-full" data-trix-target="imageFields">
-      <input type="text" class="h-8 px-2 mt-1 border-0 ring-0 focus:ring-0 w-full text-sm italic" placeholder="Alt text" data-trix-target="altField" data-action="keyup->trix#setAltText keydown->trix#preventSubmission" />
-    </div>
-  
+
     <div hidden data-reveal data-trix-dialogs>
       <div class="trix-dialog" data-trix-dialog="href" data-trix-dialog-attribute="href">
         <div class="fixed inset-0 flex justify-center items-center bg-gray-700 bg-opacity-25 z-50">
@@ -98,4 +94,7 @@
     </div>
     
   </div>
+</div>
+<div class="absolute hidden w-full" data-trix-target="imageFields">
+  <input type="text" class="h-8 px-2 mt-1 border-0 ring-0 focus:ring-0 w-full text-sm italic" placeholder="Alt text" data-trix-target="altField" data-action="keyup->trix#setAltText keydown->trix#preventSubmission" />
 </div>

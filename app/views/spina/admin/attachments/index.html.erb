@@ -1,5 +1,5 @@
 <%= render Spina::UserInterface::HeaderComponent.new do |header| %>
-  <% header.actions do %>
+  <% header.with_actions do %>
     <%= form_with model: [:admin, Spina::Attachment.new], url: spina.admin_attachments_path, data: {controller: "form loading-button", loading_message: t('spina.media_library.uploading'), action: "turbo:submit-end->loading-button#doneLoading"} do |f| %>
     
       <%= f.file_field :files, multiple: true, id: "new_attachment_file_field", class: 'hidden', data: {action: "loading-button#loading form#requestSubmit"} %>
@@ -10,7 +10,7 @@
       </button>
     <% end %>
   <% end %>    
-  <% header.navigation do %>
+  <% header.with_navigation do %>
     <nav class="-mb-3 mt-4">
       <ul class="inline-flex w-auto rounded-md bg-white">
         <%= render Spina::UserInterface::TabLinkComponent.new(spina.admin_images_path) do %>
@@ -27,7 +27,13 @@
   <% end %>
 <% end %>
 
-<div class="my-8 border-t border-gray-200">
+<div class="px-8 mt-4 flex items-center justify-end">
+  <%= form_with method: :get, url: spina.admin_attachments_path, data: {controller: "form", turbo_frame: "attachments"} do |f| %>
+    <%= render Spina::Forms::SearchComponent.new(f, :query) %>
+  <% end %>
+</div>
+
+<div class="my-4 border-t border-gray-200">
   
   <div data-controller="infinite-scroll">
     <%= turbo_frame_tag "attachments" do %>
@@ -36,7 +42,7 @@
         
         <% if @attachments.next_page %>
           <%= turbo_frame_tag "attachments-#{@attachments.next_page}", data: {action: "turbo:frame-load->infinite-scroll#load"} do %>
-            <%= link_to t('spina.ui.load_more'), path_to_next_page(@attachments), class: 'hidden', data: {infinite_scroll_target: "button"} %>
+            <%= link_to t('spina.ui.load_more'), path_to_next_page(@attachments), class: "btn btn-default", data: {infinite_scroll_target: "button"} %>
           <% end %>
         <% end %>
       <% end %>

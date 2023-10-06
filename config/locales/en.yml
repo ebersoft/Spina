@@ -133,6 +133,7 @@ en:
       insert: Insert document
       insert_multiple: Insert documents
       upload: Upload files
+      upload_one: Upload file
     cancel: Cancel
     choose_from_library: Choose from library
     close: Close
@@ -226,9 +227,15 @@ en:
       delete_item: Delete item
       delete_item_confirmation_html: Are you sure you want to <span class='font-semibold'>delete</span> this menu item?
       description: Add and sort items as you see fit. You can add nested menu items, but don't have to.
+      edit_item: "Edit item"
       navigations: Navigations
       no_navigations: This website has no navigations yet. You can set one up in your theme configuration.
       sorting_saved: Sorting saved
+      url_placeholder: "https://"
+      url_title_placeholder: "Label"
+    navigation_items:
+      page: Page
+      url: URL
     notifications:
       alert: Oops! Something went wrong
       information: Information
@@ -278,6 +285,7 @@ en:
       save_draft: Save draft
       saved: Page saved
       saving: Saving...
+      select_page: Select page
       couldnt_be_saved: Page couldn't be saved
       search_engines: Search engines
       show_in_menu: invisible
@@ -342,10 +350,12 @@ en:
     ui:
       cancel: Cancel
       delete: Delete
+      delete_item: "Delete %{item}"
       load_more: Load more
       move_to: Move to
       new_entry: New entry
       optional: Optional
+      or: or
       rename: Rename
       replace: Replace
       save_changes: Save changes

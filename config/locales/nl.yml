@@ -1,5 +1,17 @@
 nl:
+  activemodel:
+    attributes:
+      spina/embeds/youtube:
+        url: youtube.com/watch?v=...
+      spina/embeds/vimeo:
+        url: vimeo.com/...
   activerecord:
+    errors:
+      models:
+        spina/page:
+          attributes:
+            title:
+              blank: Titel is verplicht
     attributes:
       spina/account:
         address: Adres
@@ -94,6 +106,15 @@ nl:
       spina/user:
         one: Gebruiker
         other: Gebruikers
+  helpers:
+    label:
+      spina/embeds/button:
+        url: URL
+        label: Button label
+      spina/embeds/youtube:
+        url: Youtube URL
+      spina/embeds/vimeo:
+        url: Vimeo URL
   spina:
     accounts:
       contact_details: Contactgegevens
@@ -106,9 +127,11 @@ nl:
     attachments:
       choose_attachment: Kies een bijlage
       delete_confirmation_html: Weet je het zeker? Het kan zijn dat dit document in gebruik is op een pagina.
+      download: Download
       insert: Document toevoegen
       insert_multiple: Documenten toevoegen
-      upload: 
+      upload: Upload documenten
+      upload_one: Upload document
     cancel: Annuleren
     choose_from_library: Kies uit bibliotheek
     close: Sluiten
@@ -116,6 +139,9 @@ nl:
     delete_confirmation: Weet je zeker dat je <strong>%{subject}</strong> wilt verwijderen?
     edit: Bewerken
     edit_website: Bewerk je website
+    embeds:
+      embed_a_component: Embed een onderdeel
+      embed_component: Embed onderdeel
     forgot_password:
       expired: Je wachtwoord reset is verlopen
       mail_subject: Stel je wachtwoord opnieuw in
@@ -139,6 +165,7 @@ nl:
       insert_photo: Afbeelding invoegen
       insert_photos: Afbeeldingen invoegen
       link: Link
+      missing_image: Ontbrekende afbeelding
       new_folder: Nieuwe folder
       organize: Herindelen
       remove_image: Verwijder afbeelding
@@ -217,6 +244,7 @@ nl:
       change_view_template: Wijzig pagina template
       change_view_template_confirmation: Weet je zeker dat je de pagina template wil veranderen? Inhoud die niet op de nieuwe pagina past gaat verloren.
       concept: concept
+      couldnt_be_saved: Pagina kon niet worden opgeslagen
       create: Maak pagina
       create_page: "%{template} invullen"
       delete: Verwijder pagina
@@ -250,6 +278,7 @@ nl:
       save_draft: Concept opslaan
       saved: Pagina opgeslagen
       saving: "<i></i> Opslaan..."
+      select_page: Kies pagina
       search_engines: Zoekmachines
       show_in_menu: onzichtbaar
       skip_to_first_child: doorsturen naar 1<sup>e</sup> subpagina
@@ -305,8 +334,10 @@ nl:
     save: Opslaan
     search: Zoeken...
     settings:
+      general: Algemeen
       save: Voorkeuren opslaan
       title: Voorkeuren
+      users: Gebruikers
     theme:
       save: Thema opslaan
       saved: Thema opgeslagen
@@ -315,14 +346,26 @@ nl:
     ui:
       cancel: Annuleer
       delete: Verwijder
+      delete_item: "Verwijder %{item}"
       load_more: Meer laden
       move_to: Verplaats naar
       new_entry: Nieuw item
       optional: Optioneel
+      or: of
       rename: Hernoemen
       replace: Vervangen
       save_changes: Wijzigingen opslaan
       saving: Opslaan...
+    user_mailer:
+      forgot_password:
+        button: Reset je wachtwoord
+        introduction: Je hebt recent aangegeven dat je je wachtwoord bent vergeten voor je Spina CMS-account. Deze wachtwoord-reset is geldig voor 2 uur. Klik op de link of plak de URL in je browser.
+        introduction_html: "Je hebt recent aangegeven dat je je wachtwoord bent vergeten voor je Spina CMS-account. Gebruik de knop hieronder. <strong>Deze wachtwoord-reset is 2 uur geldig.</strong>"
+        preheader: Gebruik deze link om je wachtwoord te resetten. Deze is 2 uur geldig
+        request_origin: Beveiliging, dit is aangevraagd vanaf een %{platform}-apparaat via %{browser}. Als je geen wachtwoord-reset hebt aangevraagd, negeer deze e-mail dan.
+        salutation: Hoi, %{name}
+        subject: Stel je wachtwoord opnieuw in
+        trouble: Als bovenstaande knop niet werkt, kopieer en plak deze onderstaande link dan in de browser
     users:
       authorization: Autorisatie
       authorization_description: Admins kunnen gebruikers beheren. Normale gebruikers niet.
@@ -340,6 +383,7 @@ nl:
     visit_page: Bekijk pagina
     website:
       all_pages: Alle pagina's
+      content: Content
       documents: Documenten
       images: Afbeeldingen
       main: Pagina's
@@ -348,6 +392,8 @@ nl:
       pages: Pagina's
       pages_description: Alle pagina's op je website
       photos: Afbeeldingen
+      settings: Instellingen
+      theme: Thema
       title: Je website
     wysiwyg:
       heading_1: Kop 1

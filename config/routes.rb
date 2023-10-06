@@ -11,7 +11,6 @@ Rails.application.routes.draw do
 end
 
 Spina::Engine.routes.draw do
-  
   # API
   namespace :api, path: Spina.config.api_path do
     resources :pages, only: [:index, :show]
@@ -33,7 +32,7 @@ Spina::Engine.routes.draw do
     patch "/settings/:plugin", to: "settings#update", as: :settings
 
     resources :users
-    
+
     # Sessions
     resources :sessions
     get "login" => "sessions#new"
@@ -47,12 +46,17 @@ Spina::Engine.routes.draw do
         get :edit_content
         get :edit_template
         get :children
+        post :sort_one
       end
       
-      resource :move, controller: "move_pages"
+      collection do
+        post :sort
+      end
 
-      post :sort, on: :collection
-      post :sort_one, on: :member
+      resource :move, controller: "move_pages"
+    end
+    resources :page_select_options, only: [:show, :index] do
+      post :search, on: :collection
     end
     resources :page_translations, only: [:destroy]
     resources :parent_pages
@@ -66,12 +70,7 @@ Spina::Engine.routes.draw do
     end
 
     resources :attachments do
-      collection do
-        get 'select/:page_part_id' => 'attachments#select', as: :select
-        post 'insert/:page_part_id' => 'attachments#insert', as: :insert
-        get 'select_collection/:page_part_id' => 'attachments#select_collection', as: :select_collection
-        post 'insert_collection/:page_part_id' => 'attachments#insert_collection', as: :insert_collection
-      end
+      post :inline_upload, on: :collection
     end
     resources :rename_files
 
@@ -80,9 +79,9 @@ Spina::Engine.routes.draw do
     end
 
     resources :images
-    
+
     resource :media_picker, controller: "media_picker", only: [:show]
-    
+
     resources :embeds, only: [:new, :create]
   end
 
@@ -94,12 +93,11 @@ Spina::Engine.routes.draw do
     root to: "pages#homepage"
 
     # Pages
-    get '/:locale/*id' => 'pages#show', constraints: {locale: /#{Spina.locales.join('|')}/ }
-    get '/:locale/' => 'pages#homepage', constraints: {locale: /#{Spina.locales.join('|')}/ }
-    get '/*id' => 'pages#show', as: "page", controller: 'pages', constraints: -> (request) {
+    get "/:locale/*id" => "pages#show", :constraints => {locale: /#{Spina.locales.join('|')}/}
+    get "/:locale/" => "pages#homepage", :constraints => {locale: /#{Spina.locales.join('|')}/}
+    get "/*id" => "pages#show", :as => "page", :controller => "pages", :constraints => ->(request) {
       request.path.exclude?(ActiveStorage.routes_prefix) &&
-      !(Rails.env.development? && request.path.starts_with?('/rails/'))
+        !(Rails.env.development? && request.path.starts_with?("/rails/"))
     }
   end
-
 end

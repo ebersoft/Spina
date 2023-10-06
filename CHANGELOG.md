@@ -1,5 +1,68 @@
 # Spina CMS Changelog
 
+## 2.17
+
+### 2.17.0 (October 6th, 2023)
+* Added support for Rails 7.1
+* Added localization for Czech language
+* Added support for multiple sections for layout parts
+* Updated page select form
+* Updated post-install message
+* Updated gem dependencies
+* Fixed: scoped collection on NavigationItems
+
+## 2.16
+
+### 2.16.0 (August 23rd, 2023)
+* Added support for custom URLs in Navigation (remember the install the new migration)
+* Added support for pasting images into the Trix editor
+* Added data-trix-button-group to trix toolbar 
+* Updated theme config to support ancestry settings
+* Updated various translations
+* Updated gem dependencies
+* Fixed: Exclude generated tailwind config from VCS
+* Fixed: Use default theme by default
+
+## 2.15
+
+### 2.15.1 (June 28th, 2023)
+* Fix for XSS vulnerability in Pages#edit
+
+### 2.15.0 (May 10th, 2023)
+_Notice: ViewComponent was updated to v3 in this release, make sure your own components use the new Slots API_
+* Updated ViewComponent to v3
+* Updated gem dependencies
+* Fixed german translations
+
+## 2.14
+
+### 2.14.0 (February 22nd, 2023)
+* Added Spina::Parts::PageLink part
+* Added search to the media library
+* Added collapsable nested pages (remember to install the new migration)
+* Added hint for Spina::Parts::MultiLine
+* Fixed CSS bugs in Trix
+* Fixed bug with AttrJson 2.0
+* Fixed missing translations
+* Updated gem dependencies
+* Removed StandardRB
+
+## 2.13
+
+### 2.13.1 (December 13th, 2022)
+* Fixed a bug with spina/version.rb
+
+### 2.13.0 (December 11th, 2022)
+* Added support for `layout:` to view templates
+* Added StandardRB to SpinaCMS development
+* Added item_name to repeater part
+* Added inline file upload to attachment parts
+* Refactored the install generator
+* Fixed page redirect after deleting page in a resource
+* Fixed logout button icon
+* Deprecated the use of app/decorators in favor of app/overrides
+* Updated gem dependencies
+
 ## 2.12
 
 ### 2.12.0 (August 26th, 2022)

@@ -285,6 +285,7 @@ de:
       save_draft: Entwurf speichern
       saved: Seite gespeichert
       saving: wird gespeichert...
+      select_page: Seite wählen
       couldnt_be_saved: Seite konnte nicht gespeichert werden
       search_engines: Suchmaschinen
       show_in_menu: unsichtbar
@@ -349,6 +350,7 @@ de:
     ui:
       cancel: Abbrechen
       delete: Löschen
+      delete_item: "%{item} löschen"
       load_more: Weitere laden
       move_to: Verschieben nach
       new_entry: Neuer Eintrag

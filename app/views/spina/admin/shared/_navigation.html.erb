@@ -3,7 +3,7 @@
 
     <ul class="flex md:flex-col">
       <%= render Spina::MainNavigation::SubNavComponent.new(:content) do |nav| %>
-        <% nav.icon do %>
+        <% nav.with_icon do %>
           <%= heroicon('document-text', style: :solid, class: 'hidden md:block w-8 h-8 text-white md:mr-3') %>
           <%= heroicon('menu', style: :solid, class: 'md:hidden w-8 h-8 text-white md:mr-3') %>
           
@@ -12,13 +12,15 @@
           </div>
         <% end %>
 
-        <% nav.links do %>
+        <% nav.with_links do %>
         
           <%= render Spina::MainNavigation::LinkComponent.new t('spina.website.pages'), spina.admin_pages_path, active: controller_name.in?(%w(pages resources)) %>
           
           <%= render Spina::MainNavigation::LinkComponent.new t('spina.navigations.navigations'), spina.admin_navigations_path, active: controller_name == "navigations" %>
-
-          <%= render Spina::MainNavigation::LinkComponent.new t('spina.layout.layout'), spina.edit_admin_layout_path, active: controller_name == "layout" %>
+          
+          <% if Spina::Current.theme.layout_parts.present? %>
+            <%= render Spina::MainNavigation::LinkComponent.new t('spina.layout.layout'), spina.edit_admin_layout_path, active: controller_name == "layout" %>
+          <% end %>
           
           <%= render Spina::MainNavigation::LinkComponent.new t('spina.website.media_library'), spina.admin_images_path, active: controller_name.in?(%w(images media_folders attachments)) %>
           
@@ -29,7 +31,7 @@
       <%= render Spina::Hooks::HookComponent.new(partial: "primary_navigation") %>
 
       <%= render Spina::MainNavigation::SubNavComponent.new(:settings) do |nav| %>
-        <% nav.icon do %>
+        <% nav.with_icon do %>
           <%= heroicon('cog-8-tooth', style: :solid, class: 'w-8 h-8 text-white md:mr-3') %>
           
           <div class="text-white font-semibold hidden md:block transform -translate-x-2 ease-in-out duration-300 absolute md:relative opacity-0 transition-all" data-navigation-target="label">
@@ -37,7 +39,7 @@
           </div>
         <% end %>
 
-        <% nav.links do %>
+        <% nav.with_links do %>
           <%= render Spina::MainNavigation::LinkComponent.new(t('spina.settings.general'), spina.edit_admin_account_path, active: controller_name == "accounts") %>
           <%= render Spina::MainNavigation::LinkComponent.new(t('spina.website.theme'), spina.edit_admin_theme_path, active: controller_name == "theme") %>
 
@@ -61,7 +63,9 @@
       <ul class="md:block">
         <li>
           <%= link_to logout_path, class: 'p-3 w-14 block flex justify-center opacity-50 hover:opacity-100 transition duration-200 ease', data: {turbo: false} do %>
-            <%= heroicon('logout', style: :solid, class: 'h-8 w-8 text-white') %>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" class="h-7 w-7 text-white">
+              <path fill-rule="evenodd" d="M128,256 C93.81,256 61.666,242.686 37.49,218.509 C13.315,194.334 0,162.19 0,128 C0,93.81 13.315,61.668 37.49,37.491 C43.739,31.242 53.869,31.242 60.118,37.491 C66.367,43.739 66.367,53.87 60.118,60.118 C41.985,78.25 32,102.357 32,128 C32,153.643 41.985,177.75 60.118,195.882 C78.25,214.014 102.357,224 128,224 C153.643,224 177.75,214.014 195.882,195.882 C214.015,177.75 224,153.643 224,128 C224,102.357 214.015,78.25 195.882,60.118 C189.633,53.87 189.633,43.739 195.882,37.491 C202.13,31.243 212.261,31.243 218.51,37.491 C242.686,61.668 256,93.809 256,128 C256,162.191 242.685,194.334 218.51,218.509 C194.334,242.686 162.19,256 128,256 L128,256 L128,256 Z M128,144 C136.837,144 144,136.837 144,128 L144,16 C144,7.163 136.837,0 128,0 C119.163,0 112,7.163 112,16 L112,128 C112,136.837 119.163,144 128,144 L128,144 L128,144 Z" clip-rule="evenodd" />
+            </svg>
           <% end %>
         </li>
       </ul>

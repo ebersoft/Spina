@@ -17,7 +17,7 @@ module Spina
       end
 
       def svg?
-        filename =~ /\.svg\z/
+        filename.end_with?(".svg")
       end
 
       def spina_image
@@ -27,15 +27,17 @@ module Spina
       def present?
         signed_blob_id.present?
       end
-      
-      def signed_id(expires_in: nil)
+
+      # Rails 7.1 started using 'expires_at', so we 
+      # include both expires_in and expires_at for backwards
+      # compatibility
+      def signed_id(expires_at: nil, expires_in: nil)
         signed_blob_id
       end
-      
+
       def variant(options)
         Spina::Parts::ImageVariant.new(self, options)
       end
-      
     end
   end
 end

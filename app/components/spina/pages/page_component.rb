@@ -1,14 +1,14 @@
 module Spina
   module Pages
     class PageComponent < ApplicationComponent
-      attr_reader :sortable, :draggable
-  
+      attr_reader :page, :sortable, :draggable
+
       def initialize(page:, sortable: true, draggable: true)
         @page = page
         @sortable = sortable
         @draggable = draggable
       end
-      
+
       def label
         labels = []
         labels << t("spina.pages.concept") if @page.draft?
@@ -17,19 +17,24 @@ module Spina
         return nil if labels.size.zero?
         "(#{labels.join(", ")})"
       end
-      
+
       def sortable?
         sortable
       end
-      
+
       def draggable?
         draggable
       end
-  
-      def depth
-        @page.depth
-      end
       
+      # Pages are collapsed by default if they're inside a resource
+      def collapsed?
+        page.resource_id.present?
+      end
+
+      def depth
+        page.depth
+      end
+
       def css_class
         case depth
         when 1
@@ -38,11 +43,17 @@ module Spina
           "pl-10 bg-gray-200"
         end
       end
-  
-      def children
-        @children ||= @page.children.active.sorted
+      
+      # Explicitly check for "== 0" to account for older
+      # Spina setups where ancestry_children_count is still NULL
+      def has_children?
+        return false if page.ancestry_children_count == 0
+        page.has_children?
       end
-  
+
+      def children
+        @children ||= page.children.active.sorted
+      end
     end
   end
 end
