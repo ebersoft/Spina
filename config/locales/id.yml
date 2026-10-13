@@ -69,8 +69,6 @@ id:
         parent_page: 
         view_template: 
       spina/user:
-        admin: Administrator
-        admin_description: Administrator dapat membuat pengguna
         email: E-mail
         email_description: E-mail Anda harus unik
         last_logged_in: Terkahir masuk
@@ -352,3 +350,6 @@ id:
       unlink: 
       url: 
       url_placeholder: 
+  errors:
+    messages:
+      unsafe_url: "harus berupa path relatif atau diawali dengan http://, https://, mailto: atau tel:"

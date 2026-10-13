@@ -75,8 +75,6 @@ fr:
         parent_page: Page parente
         view_template: Modèle de page par défaut
       spina/user:
-        admin: Administrateur
-        admin_description: Les administrateurs peuvent créer des utilisateurs
         email: Email
         email_description: Votre email doit être unique
         last_logged_in: Dernière connexion
@@ -100,6 +98,9 @@ fr:
       spina/user:
         one: Utilisateur
         other: Utilisateurs
+  errors:
+    messages:
+      unsafe_url: "doit être un chemin relatif ou commencer par http://, https://, mailto: ou tel:"
   helpers:
     label:
       spina/embeds/button:

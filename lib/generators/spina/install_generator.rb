@@ -64,6 +64,7 @@ module Spina
         template "config/initializers/themes/#{theme}.rb"
         directory "app/views/#{theme}"
         directory "app/views/layouts/#{theme}"
+        directory "app/templates/spina/#{theme}"
       end
       Spina::THEMES.clear
       Dir[Rails.root.join("config", "initializers", "themes", "*.rb")].each { |file| load file }
@@ -83,7 +84,7 @@ module Spina
       end
 
       @temporary_password = password
-      ::Spina::User.create name: "admin", email: email, password: password, admin: true
+      ::Spina::User.create name: "admin", email: email, password: password
     end
 
     def bootstrap_spina

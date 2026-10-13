@@ -80,8 +80,6 @@ ru:
         parent_page: Родительская страница
         view_template: Шаблон представления по умолчанию
       spina/user:
-        admin: Администратор
-        admin_description: Администраторы могут создавать пользователей
         email: Почта
         email_description: Адрес вашей электронной почты должен быть уникален
         last_logged_in: Последний вход был
@@ -119,6 +117,9 @@ ru:
         many: Пользователей
         one: Пользователь
         other: Пользователей
+  errors:
+    messages:
+      unsafe_url: "должен быть относительным путём или начинаться с http://, https://, mailto: или tel:"
   helpers:
     label:
       spina/embeds/button:

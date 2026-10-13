@@ -69,8 +69,6 @@ it:
         parent_page: Pagina parente
         view_template: Template view di default
       spina/user:
-        admin: Amministratore
-        admin_description: Gli amministratori possono creare utenti
         email: Email
         email_description: La tua email deve essere univoca
         last_logged_in: Loggato l'ultima volta il
@@ -352,3 +350,6 @@ it:
       unlink: 
       url: 
       url_placeholder: 
+  errors:
+    messages:
+      unsafe_url: "deve essere un percorso relativo o iniziare con http://, https://, mailto: o tel:"

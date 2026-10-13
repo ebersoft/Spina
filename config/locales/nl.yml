@@ -81,8 +81,6 @@ nl:
         parent_page: Bovenliggende pagina
         view_template: Standaard pagina template
       spina/user:
-        admin: Beheerder
-        admin_description: Beheerders kunnen gebruikers aanmaken
         email: Emailadres
         email_description: Gebruik een uniek emailadres
         last_logged_in: Laatst ingelogd
@@ -106,6 +104,9 @@ nl:
       spina/user:
         one: Gebruiker
         other: Gebruikers
+  errors:
+    messages:
+      unsafe_url: "moet een relatief pad zijn of beginnen met http://, https://, mailto: of tel:"
   helpers:
     label:
       spina/embeds/button:
